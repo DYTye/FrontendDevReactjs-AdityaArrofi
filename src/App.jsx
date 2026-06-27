@@ -138,7 +138,7 @@ function App() {
               </div>
 
               <Link
-                to={`/restaurant/${item.id}`}
+                to={`/${item.id}`}
                 className="p-3 text-center bg-blue-900 text-white text-bold"
               >
                 Learn More
@@ -148,7 +148,7 @@ function App() {
         })}
       </div>
       <button
-        className=" ring-2 p-4 rounded-md"
+        className=" ring-2 p-4 rounded-md cursor-pointer"
         onClick={() => {
           setVisibleCount(dataApi.length);
         }}
