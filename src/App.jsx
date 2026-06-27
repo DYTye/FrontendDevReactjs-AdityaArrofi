@@ -5,22 +5,23 @@ import "./App.css";
 import Footer from "./Footer.jsx";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 function App() {
   const [dataApi, setDataApi] = useState([]);
   const [btnBuka, setBtnBuka] = useState(false);
   const [filterPrice, setFilterPrice] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
+  const [visibleCount, setVisibleCount] = useState(8);
 
   useEffect(() => {
     async function fetchData() {
-      let url = `https://6a3faf1c9b6d371e83810e01.mockapi.io/restorant`
+      let url = `https://6a3faf1c9b6d371e83810e01.mockapi.io/restorant`;
 
       if (filterCategory != "") url = `${url}?categories=${filterCategory}`;
 
-      const response = await fetch(
-        `${url}`,
-      );
+      const response = await fetch(`${url}`);
       const data = await response.json();
       console.log(data[0]);
       setDataApi(data);
@@ -43,7 +44,6 @@ function App() {
     return true;
   });
 
-
   return (
     <div className=" flex justify-center flex-col gap-5 m-5">
       <div className="flex flex-col justify-start">
@@ -64,6 +64,7 @@ function App() {
           <input
             id="isOpen"
             type="checkbox"
+            checked={btnBuka}
             onChange={(e) => setBtnBuka(e.target.checked)}
           />
         </div>
@@ -102,9 +103,9 @@ function App() {
         <div className="ring-2 rounded-md">
           <button
             className="p-3"
-            onClick={(() => {
+            onClick={() => {
               (setBtnBuka(false), setFilterCategory(""), setFilterPrice(""));
-            })}
+            }}
           >
             Clear All
           </button>
@@ -113,12 +114,20 @@ function App() {
       <hr />
 
       <div className="grid grid-cols-4 gap-4">
-        {openOrClose?.map((item) => {
+        {openOrClose?.slice(0, visibleCount).map((item) => {
           return (
             <div key={item.id} className="flex flex-col gap-2 m-2">
               <img src={item?.photos} alt="" className="aspect-square" />
               <p className="text-2xl">{item?.name}</p>
-              <p>{item?.rating} </p>
+              <div className="flex text-lg my-1">
+                {Array.from({ length: 5 }, (_, index) => {
+                  if (index < Math.round(item?.rating)) {
+                    return <FaStar key={index} />;
+                  } else {
+                    return <FaRegStar key={index} />;
+                  }
+                })}
+              </div>
               <div className="flex justify-between">
                 <div className="flex gap-2">
                   <p className="font-light">{item?.categories?.join(",")}</p>
@@ -136,6 +145,14 @@ function App() {
           );
         })}
       </div>
+      <button
+        className=" ring-2 p-4 rounded-md"
+        onClick={() => {
+          setVisibleCount(dataApi.length);
+        }}
+      >
+        Load More
+      </button>
       <Footer></Footer>
     </div>
   );
