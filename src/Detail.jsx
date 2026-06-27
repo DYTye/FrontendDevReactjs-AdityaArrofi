@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Footer from "./Footer.jsx";
 
 function detail() {
   const { id } = useParams();
@@ -64,6 +65,7 @@ function detail() {
           );
         })}
       </div>
+      <Footer></Footer>
     </div>
   );
 }
