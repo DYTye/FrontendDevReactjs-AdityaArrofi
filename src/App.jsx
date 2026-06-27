@@ -136,11 +136,13 @@ function App() {
                 </div>
                 <p>{item?.isOpen ? "open" : "close"}</p>
               </div>
-              <div className="bg-blue-900 text-white text-bold">
-                <div className="p-3 text-center">
-                  <Link to={`/restaurant/${item.id}`}>Learn More</Link>
-                </div>
-              </div>
+
+              <Link
+                to={`/restaurant/${item.id}`}
+                className="p-3 text-center bg-blue-900 text-white text-bold"
+              >
+                Learn More
+              </Link>
             </div>
           );
         })}
