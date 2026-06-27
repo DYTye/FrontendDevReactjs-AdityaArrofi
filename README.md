@@ -1,26 +1,25 @@
-# React + Vite
+Repositori ini berisi implementasi solusi *Technical Test* untuk posisi **Frontend Developer Intern** di **Sekawan Media**. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+---
 
-Currently, two official plugins are available:
+## 🛠️ Spesifikasi Lingkungan (*Environment Prerequisites*)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Aplikasi ini dikembangkan dan diuji menggunakan spesifikasi lingkungan berikut untuk memastikan konsistensi performa:
+* **Node.js:** `v24.15.0`
+* **React:** `v19.2.7`
+* **Build Tool:** Vite
+* **Styling Framework:** Tailwind CSS
+* **Icon Library:** React Icons (FontAwesome)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 Cara Menjalankan Proyek
 
-## Expanding the Oxlint configuration
+Jalankan perintah berikut di terminal Anda secara berurutan untuk memulai server pengembangan lokal:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+# 1. Instal dependensi terlebih dahulu
+npm install
 
-
-## Node Version
-v24.15.0
-
-## React Version
-V19.2.7
-
-## How to run
+# 2. Jalankan server lokal
 npm run dev
